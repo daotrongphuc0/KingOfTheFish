@@ -1,0 +1,10 @@
+{
+    "fish": {
+        "height": 100,
+        "width": 100
+    },
+    "animation": [
+        "../assets/images/eat.png",
+        "../assets/images/fish.png"
+    ]
+}

@@ -1,0 +1,158 @@
+{
+    "game_bg": {
+        "x_bg": 0,
+        "y_bg": 50,
+        "width": 1280,
+        "height": 720,
+        "backgroundImage": "bgGameLv2",
+        "score_increase": 5,
+        "limit_small_fish": 3,
+        "name_lv": "level 2"
+    },
+    "mainFish": {
+        "x": 200,
+        "y": 200,
+        "width": 100,
+        "height": 100
+    },
+    "smallFish": [
+        {
+            "x": 200,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 500,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 800,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 1000,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 200,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 500,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 800,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 1000,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 200,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 500,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 200,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 500,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 800,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 1000,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 200,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 500,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 800,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 1000,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 200,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 500,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        }
+    ],
+    "bigFish": [
+        {
+            "x": 800,
+            "y": 200,
+            "width": 100,
+            "height": 100,
+            "time_random": 3000,
+            "speed_angry": 1.75
+        },
+        {
+            "x": 600,
+            "y": 600,
+            "width": 100,
+            "height": 100,
+            "time_random": 4000,
+            "speed": 1.5
+        }
+    ]
+}
