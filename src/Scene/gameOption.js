@@ -63,57 +63,39 @@ export class GameOption extends Container {
         this.addChild(this.headText)
         this.addChild(this.contentText)
 
-        const style = new TextStyle({
-            fill: "#d3f948",
-            fontFamily: "\"Times New Roman\", Times, serif",
-            fontSize: 72,
-            fontWeight: 700
-        });
+        const bgGameMenu = manifest.bundles.find(bundle => bundle.name === 'sprite');
 
-        const bgGameMenu = manifest.bundles.find(bundle => bundle.name === 'background');
-        const texture = Texture.from(bgGameMenu.assets['item_option']);
-        this.level1 = new Sprite(texture.clone())
-        this.level1.texture.frame = new Rectangle(0, this.level1.height / 3, this.level1.width, this.level1.height / 3)
-        this.level1.scale.set(0.5)
+        this.level1 = new Sprite(Texture.from(bgGameMenu.assets['btn_level1']))
+        this.level1.scale.set(0.4)
         this.level1.anchor.set(0.5)
         this.level1.x = dataGame.game.width / 2
         this.level1.y = dataGame.game.height / 2
         this.addChild(this.level1)
-
-        this.text_lv1 = new Text('Level 1', style)
-        this.text_lv1.anchor.set(0.5)
-        this.level1.addChild(this.text_lv1)
 
         this.level1.interactive = true;
         this.level1.on('pointerover', this.onPointerOver.bind(this.level1));
         this.level1.on('pointerout', this.onPointerOut.bind(this.level1));
         this.level1.on('click', this.onClickStartLv1.bind(this.level1))
 
-        this.level2 = new Sprite(texture.clone())
-        this.level2.texture.frame = new Rectangle(0, this.level2.height / 3, this.level2.width, this.level2.height / 3)
-        this.level2.scale.set(0.5)
+        this.level2 = new Sprite(Texture.from(bgGameMenu.assets['btn_level2']))
+        this.level2.scale.set(0.4)
         this.level2.anchor.set(0.5)
         this.level2.x = dataGame.game.width / 2
         this.level2.y = dataGame.game.height / 2 + 90
         this.addChild(this.level2)
-        this.text_lv2 = new Text('Level 2', style)
-        this.text_lv2.anchor.set(0.5)
-        this.level2.addChild(this.text_lv2)
+
         this.level2.interactive = true;
         this.level2.on('pointerover', this.onPointerOver.bind(this.level2));
         this.level2.on('pointerout', this.onPointerOut.bind(this.level2));
         this.level2.on('click', this.onClickStartLv2.bind(this.level2))
 
-        this.exit = new Sprite(texture.clone())
-        this.exit.texture.frame = new Rectangle(0, this.exit.height / 3, this.exit.width, this.exit.height / 3)
-        this.exit.scale.set(0.5)
+        this.exit = new Sprite(Texture.from(bgGameMenu.assets['btn_exit']))
+        this.exit.scale.set(0.4)
         this.exit.anchor.set(0.5)
         this.exit.x = dataGame.game.width / 2
         this.exit.y = dataGame.game.height / 2 + 180
         this.addChild(this.exit)
-        this.text_bt_home = new Text('Back', style)
-        this.text_bt_home.anchor.set(0.5)
-        this.exit.addChild(this.text_bt_home)
+
         this.exit.interactive = true;
         this.exit.on('pointerover', this.onPointerOver.bind(this.exit));
         this.exit.on('pointerout', this.onPointerOut.bind(this.exit));
@@ -122,11 +104,15 @@ export class GameOption extends Container {
     }
 
     onPointerOver() {
-        this.scale.set(0.52)
+        var scale_x = this.scale.x;
+        var scale_y = this.scale.y;
+        this.scale.set(scale_x + 0.05, scale_y + 0.05)
     }
 
     onPointerOut() {
-        this.scale.set(0.5)
+        var scale_x = this.scale.x;
+        var scale_y = this.scale.y;
+        this.scale.set(scale_x - 0.05, scale_y - 0.05)
     }
 
     onClickStartLv1() {

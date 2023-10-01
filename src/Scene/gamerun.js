@@ -38,7 +38,7 @@ export class GameRun extends Container {
         this.addChild(this.bg);
 
         // scen begin level
-        this.begin_game = new BeginLevel('level 1')
+        this.begin_game = new BeginLevel('Level 1')
         this.bg.addChild(this.begin_game)
 
         // đợi hiển thị 
@@ -117,7 +117,6 @@ export class GameRun extends Container {
 
     keypause(event) {
         if (event.keyCode == 32) {
-            console.log('pause')
             Game.isPause = !Game.isPause
             if (Game.isPause) {
                 this.addChild(this.pause)
@@ -140,7 +139,6 @@ export class GameRun extends Container {
                         this.listSmallFish.splice(i, 1)
                         this.removeChild(tmp)
 
-                        console.log("destroy fish")
                         this.score += this.score_increase
                         this.text_score.text = this.score + '/100'
                         tmp.destroy()
@@ -177,7 +175,9 @@ export class GameRun extends Container {
     }
 
     add_small_fish() {
-        if (this.quantity_fish >= data.smallFish.length) return
+        if (this.quantity_fish >= data.smallFish.length) {
+            this.quantity_fish = data.game_bg.limit_small_fish
+        }
         var number = Helper.randomFloor(0, 4)
         var tmp = new SmallFish(data.smallFish[this.quantity_fish].x, data.smallFish[this.quantity_fish].y, data.game_bg.x_bg,
             data.game_bg.y_bg, data.game_bg.width - data.game_bg.x_bg, data.game_bg.height - data.game_bg.y_bg)

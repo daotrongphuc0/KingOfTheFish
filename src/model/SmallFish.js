@@ -114,7 +114,6 @@ export class SmallFish extends Container {
             this.time_dangerous -= Ticker.shared.deltaMS
         }
 
-        //console.log(1000 / Ticker.shared.deltaMS);
     }
 
     randomDirection() {
@@ -158,7 +157,6 @@ export class SmallFish extends Container {
     checkLocation(obj) {
         var kc = Math.sqrt(Math.pow(obj.x - this.x, 2)
             + Math.pow(obj.y - this.y, 2))
-        //console.log(kc)
         if (kc < this.run_distance && this.time_dangerous < 0) {
             this.dangerous = true
             this.time_dangerous = this.default_timeLoopDangerous

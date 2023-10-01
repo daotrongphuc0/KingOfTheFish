@@ -8,7 +8,7 @@ import { GameMenu } from "./gameMenu";
 
 
 export class GameWin extends Container {
-    constructor(name_img = 'bgGame') {
+    constructor(name_img = 'bgGame', score) {
         super()
 
         this.x = 0
@@ -66,10 +66,22 @@ export class GameWin extends Container {
 
         // Đặt vị trí của chữ "Level"
         this.homeText.x = data.game.width / 2 - this.homeText.width / 2;
-        this.homeText.y = data.game.height / 2 - this.homeText.height + 60;
+        this.homeText.y = data.game.height / 2 - this.homeText.height + 50;
+        this.homeText.anchor.set(0)
         this.homeText.zIndex = 6
         this.addChild(this.homeText)
 
+        if (typeof score !== 'undefined') {
+            this.scoreText = new Text("Your score: " + score, homeTextStyle);
+
+            // Đặt vị trí của chữ "Level"
+            this.scoreText.x = data.game.width / 2 - this.scoreText.width / 2 + 60;
+            this.scoreText.y = data.game.height / 2 - this.scoreText.height + 120;
+            this.scoreText.zIndex = 6
+            this.scoreText.anchor.set(0)
+            this.addChild(this.scoreText)
+            this.scoreText.scale.set(0.5)
+        }
         this.graphics = new Graphics()
         this.graphics.beginFill('0xFFFFFF')
         this.graphics.drawRect(0, data.game.height / 2 - 170, data.game.width, this.headText.height + this.homeText.height + 50)
@@ -78,13 +90,13 @@ export class GameWin extends Container {
         this.graphics.endFill()
         this.addChild(this.graphics)
 
-        const bg_manifest = manifest.bundles.find(bundle => bundle.name === 'background');
-        const texture_item = Texture.from(bg_manifest.assets['item_home']);
+        const bg_manifest = manifest.bundles.find(bundle => bundle.name === 'sprite');
+        const texture_item = Texture.from(bg_manifest.assets['btn_home']);
         this.home_sprite = new Sprite(texture_item)
-        this.home_sprite.scale.set(0.6)
+        this.home_sprite.scale.set(0.2)
         this.home_sprite.anchor.set(0.5)
         this.home_sprite.x = data.game.width / 2
-        this.home_sprite.y = (data.game.height / 2) * 1.6
+        this.home_sprite.y = (data.game.height / 2) * 1.8
         this.addChild(this.home_sprite)
 
         this.home_sprite.interactive = true;
@@ -97,11 +109,15 @@ export class GameWin extends Container {
     }
 
     onPointerOver() {
-        this.scale.set(0.7)
+        var scale_x = this.scale.x;
+        var scale_y = this.scale.y;
+        this.scale.set(scale_x + 0.05, scale_y + 0.05)
     }
 
     onPointerOut() {
-        this.scale.set(0.6)
+        var scale_x = this.scale.x;
+        var scale_y = this.scale.y;
+        this.scale.set(scale_x - 0.05, scale_y - 0.05)
     }
 
     onClickStart() {

@@ -76,7 +76,6 @@ export class Fish extends Container {
 
 
     onKeyDown(event) {
-        //console.log(this.animated.position)
         switch (event.keyCode) {
             case 37:
                 this.goLeft = true

@@ -147,7 +147,7 @@ export class BigFish extends Container {
     checkLocation(obj) {
         var kc = Math.sqrt(Math.pow(obj.x - this.x, 2)
             + Math.pow(obj.y - this.y, 2))
-        //console.log(kc)
+
         if (kc < this.chasing_distance && this.time_angry < 0) {
             this.angry = true
             this.time_angry = this.default_timeLoopAngry

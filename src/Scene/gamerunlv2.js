@@ -16,7 +16,7 @@ import { Helper } from "../helper/Helper";
 
 
 export class GameRunLv2 extends Container {
-    constructor(nextLevel = true) {
+    constructor(nextLevel = true, challenge = false) {
         SoundManager.play_game()
         super()
         this.x = 0
@@ -28,16 +28,19 @@ export class GameRunLv2 extends Container {
         this.height = dataGame.game.height
         this.sortableChildren = true
         this.nextLevel = nextLevel
+        this.isChallenge = challenge
         this.quantity_fish = data.game_bg.limit_small_fish
-        console.log('game run lv2')
-
 
         this.bg = new Bg(0, 50, data.game_bg.backgroundImage)
         this.bg.zIndex = 0
         this.addChild(this.bg);
 
-        this.begin_game = new BeginLevel('level 2')
-
+        if (!this.isChallenge) {
+            this.begin_game = new BeginLevel('Level 2')
+        }
+        else {
+            this.begin_game = new BeginLevel('Challenge')
+        }
         this.bg.addChild(this.begin_game)
         setTimeout(() => {
             this.bg.removeChild(this > this.begin_game)
@@ -63,7 +66,6 @@ export class GameRunLv2 extends Container {
             this.addChild(tmp)
         }
 
-        console.log(data.bigFish.length)
         this.listBigFish = []
         for (var i = 0; i < data.bigFish.length; i++) {
             var tmp = new BigFish(data.bigFish[i].x, data.bigFish[i].y, data.game_bg.x_bg, data.game_bg.y_bg,
@@ -96,9 +98,14 @@ export class GameRunLv2 extends Container {
         this.text_score_name = new Text('score:', style);
         this.header.addChild(this.text_score_name)
 
-        this.text_score = new Text(this.score + '/100', style);
-        this.text_score.anchor.set(1, 0)
-        this.text_score.x = 275
+        if (!this.isChallenge) {
+            this.text_score = new Text(this.score + '/100', style);
+        }
+        else {
+            this.text_score = new Text(this.score, style);
+        }
+        this.text_score.anchor.set(0, 0)
+        this.text_score.x = 170
         this.header.addChild(this.text_score)
 
         this.text_time_name = new Text('Time:', style);
@@ -125,7 +132,6 @@ export class GameRunLv2 extends Container {
     keypause(event) {
 
         if (event.keyCode == 32) {
-            console.log('pause')
             Game.isPause = !Game.isPause
             if (Game.isPause) {
                 this.addChild(this.pause)
@@ -148,20 +154,22 @@ export class GameRunLv2 extends Container {
                         this.listSmallFish.splice(i, 1)
                         this.removeChild(tmp)
 
-
-                        console.log("destroy fish")
                         this.score += this.score_increase
-                        this.text_score.text = this.score + '/100'
+                        if (!this.isChallenge) {
+                            this.text_score.text = this.score + '/100'
+                        }
+                        else {
+                            this.text_score.text = this.score
+                        }
                         tmp.destroy()
                         this.add_small_fish()
 
-                        if (this.score >= 100) {
-                            //Game.time += this.time
+                        if (this.score >= 100 && !this.isChallenge) {
                             SoundManager.stop_game()
                             if (this.nextLevel) {
-                                Game.chanceScene(new GameWin(data.game_bg.backgroundImage))
+                                Game.chanceScene(new GameWin(data.game_bg.backgroundImage, this.score))
                             } else {
-                                Game.chanceScene(new GameWin(data.game_bg.backgroundImage))
+                                Game.chanceScene(new GameWin(data.game_bg.backgroundImage, this.score))
                             }
                         }
                     }
@@ -170,12 +178,15 @@ export class GameRunLv2 extends Container {
             }
 
             for (var i = 0; i < this.listBigFish.length; i++) {
-                //if (this.listBigFish[i].isActive) {
                 this.listBigFish[i].checkLocation(this.fish)
                 if (Collision.checkCollision(this.fish.container, this.listBigFish[i].container)) {
-                    console.log('gameover')
                     SoundManager.stop_game()
-                    Game.chanceScene(new GameOver(data.game_bg.backgroundImage));
+                    if (!this.isChallenge) {
+                        Game.chanceScene(new GameOver(data.game_bg.backgroundImage));
+                    }
+                    else {
+                        Game.chanceScene(new GameWin(data.game_bg.backgroundImage, this.score))
+                    }
                 }
 
             }
@@ -186,7 +197,9 @@ export class GameRunLv2 extends Container {
     }
 
     add_small_fish() {
-        if (this.quantity_fish >= data.smallFish.length) return
+        if (this.quantity_fish >= data.smallFish.length) {
+            this.quantity_fish = data.game_bg.limit_small_fish
+        }
         var number = Helper.randomFloor(0, 4)
         var tmp = new SmallFish(data.smallFish[this.quantity_fish].x, data.smallFish[this.quantity_fish].y, data.game_bg.x_bg,
             data.game_bg.y_bg, data.game_bg.width - data.game_bg.x_bg, data.game_bg.height - data.game_bg.y_bg)

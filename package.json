@@ -1,7 +1,7 @@
 {
-  "name": "BigFish",
+  "name": "KingOfTheFish",
   "version": "1.0.0",
-  "description": "This is the small project game using PixiJS",
+  "description": "This is the project game using PixiJS",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --env env=dev --open",
@@ -10,9 +10,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/daotrongphuc0/BigFish.git"
+    "url": "git+https://github.com/daotrongphuc0/KingOfTheFish.git"
   },
-  "author": "Purative",
+  "author": "DNBK3",
   "license": "ISC",
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
