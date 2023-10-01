@@ -5,7 +5,7 @@
         "width": 1280,
         "height": 720,
         "backgroundImage": "../assets/images/bg.png",
-        "score_increase": 100,
+        "score_increase": 10,
         "limit_small_fish": 4,
         "name_lv": "Level 1"
     },
