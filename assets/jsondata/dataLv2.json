@@ -7,7 +7,7 @@
         "backgroundImage": "bgGameLv2",
         "score_increase": 5,
         "limit_small_fish": 3,
-        "name_lv": "level 2"
+        "name_lv": "Level 2"
     },
     "mainFish": {
         "x": 200,
@@ -132,6 +132,18 @@
         },
         {
             "x": 500,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 800,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 1000,
             "y": 600,
             "width": 100,
             "height": 100

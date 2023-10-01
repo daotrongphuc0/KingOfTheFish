@@ -5,9 +5,9 @@
         "width": 1280,
         "height": 720,
         "backgroundImage": "../assets/images/bg.png",
-        "score_increase": 10,
+        "score_increase": 100,
         "limit_small_fish": 4,
-        "name_lv": "level 1"
+        "name_lv": "Level 1"
     },
     "mainFish": {
         "x": 200,
@@ -72,6 +72,18 @@
         },
         {
             "x": 500,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 800,
+            "y": 600,
+            "width": 100,
+            "height": 100
+        },
+        {
+            "x": 1000,
             "y": 600,
             "width": 100,
             "height": 100
