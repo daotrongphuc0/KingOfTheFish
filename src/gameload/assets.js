@@ -31,13 +31,22 @@ export const manifest = {
             {
                 'bgGame': '../assets/images/bg.png',
                 'bgGameOver': '../assets/images/gameOver.png',
-                'bgGameMenu': '../assets/images/bgmenu.png',
+                'bgGameMenu': '../assets/images/bgmenu.jpg',
                 'bgGameLv2': '../assets/images/bglv2.jpg',
-                'item_bg_menu': '../assets/images/menustart.png',
-                'item_home': '../assets/images/buttonhome.png',
-                'item_option': '../assets/images/option.png',
             }
 
+        },
+        {
+            name: "sprite",
+            assets: {
+                'btn_exit': '../assets/images/exit.png',
+                'btn_play': '../assets/images/play.png',
+                'btn_level1': '../assets/images/lv1.png',
+                'btn_level2': '../assets/images/lv2.png',
+                'btn_challenge': '../assets/images/challenge.png',
+                'btn_option': '../assets/images/option.png',
+                'btn_home': '../assets/images/home.png',
+            }
         },
         {
             name: "sound",

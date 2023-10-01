@@ -44,6 +44,5 @@ export class LoadGame extends Container {
         const bundleIds = manifest.bundles.map(bundle => bundle.name);
 
         await Assets.loadBundle(bundleIds);
-        console.log('load xong')
     }
 }
