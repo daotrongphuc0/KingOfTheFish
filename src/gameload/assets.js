@@ -51,7 +51,7 @@ export const manifest = {
         {
             name: "sound",
             assets: {
-                'sound_eat': '../assets/sound/eat.wav',
+                'sound_eat': '../assets/sound/eat.mp3',
                 'sound_game': '../assets/sound/game.mp3',
                 'sound_home': '../assets/sound/home.mp3'
             }
